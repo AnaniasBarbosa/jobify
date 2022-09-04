@@ -1,0 +1,18 @@
+<%- include("./partials/header.ejs") %>
+<div class="container">
+    <div>
+        <h1>GERENCIAMENTO JOBIFY</h1>
+
+    </div>
+    <div>
+        <form action="">
+            <h3>Criação de vagas</h3>
+            <select name="categoria" id="categorias">
+                <% categorias.forEach(cat => { %>
+                <option value="<%- cat.id %> "> <%- cat.categoria %> </option>
+                <% }) %>
+            </select>
+        </form>
+    </div>
+</div>
+<%- include("./partials/footer.ejs") %>

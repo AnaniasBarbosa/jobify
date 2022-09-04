@@ -1,0 +1,21 @@
+<%- include("./partials/header.ejs") %>
+<main>
+  <div class="rectangle">
+    <h3>Open roles </h3>
+  </div>
+
+  <div class="roles">
+    <% categorias.forEach((categoria) => { %>
+    <h3 class="categoria">Categoria: <%- categoria.categoria %></h3>
+    <ul>
+      <li class="vaga">
+        <% categoria.vagas.forEach((vg) => { %>
+        <a href="vaga/<%-vg.id%>">Vaga: <%- vg.nome %> </a>
+        <p>Descrição: <%- vg.descricao %></p>
+        <% }) %>
+      </li>
+    </ul>
+    <% }) %>
+  </div>
+</main>
+<%- include("./partials/footer.ejs") %>

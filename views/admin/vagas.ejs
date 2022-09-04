@@ -1,0 +1,22 @@
+<%- include("./partials/header.ejs") %>
+<div class="container">
+    <div>
+        <h1>GERENCIAMENTO DE VAGAS</h1>
+        <h4>
+            <a href="/admin/vagas/criarVaga/">Criar nova vaga</a>
+        </h4>
+    </div>
+
+    <div>
+        <h3>Vagas:</h3>
+        <ul>
+            <% vagas.forEach(vg => { %>
+            <li>
+                <%- vg.nome %>
+                <a href="/admin/vagas/remover/<%- vg.id %> "> Excluir</a>
+            </li>
+            <% }) %>
+        </ul>
+    </div>
+</div>
+<%- include("./partials/footer.ejs") %>
