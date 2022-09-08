@@ -4,7 +4,6 @@ const app = express();
 const connection = require("../database/database");
 const Categorias = require("../database/categorias");
 const Vagas = require("../database/vagas");
-const { urlencoded } = require("express");
 
 connection
   .authenticate()
@@ -19,17 +18,6 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.set("view engine", "ejs");
 app.use(express.static("public"));
-
-// const init = async () => {
-//   const cat = "DESENVOLVIMENTO FRONT END";
-//   Vagas.create({
-//     categoria: 3,
-//     nome: "Dev. JR REACT Native",
-//     descricao: "Auxiliar no desenvolvimento de interfaces web",
-//   });
-// };
-
-// init();
 
 app.get("/", async (req, res) => {
   const vagasBd = await Vagas.findAll({ raw: true });
