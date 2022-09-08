@@ -8,23 +8,25 @@
         <form method="post" class="container">
             <div class="container">
                 <div class="container">
-                    <h3>Criação de vagas</h3>
+                    <h3>Edição de vagas</h3>
+                    <p style="margin-top: 0px; padding-top: 0px;">Valores originais já foram carregados</p>
                 </div>
                 <div class="container">
                     <label for="">Selecione categoria</label>
-                    <select name="categoria" id="categorias">
+                    <select name="categoria" id="categorias" value="<%- vaga.categoria %>">
                         <% categorias.forEach(cat => { %>
-                        <option value="<%- cat.id %>"> <%- cat.categoria %> </option>
+                        <option value="<%- cat.id %>" <% if (vaga.categoria == cat.id) { %> selected <% } %>>
+                            <%- cat.categoria %> </option>
                         <% }) %>
                     </select>
                 </div>
                 <div class="container">
                     <label for="">Nome da vaga</label>
-                    <input type="text" name="nome">
+                    <input type="text" name="nome" value="<%- vaga.nome %>">
                 </div>
                 <div class="container">
                     <label for="">Descrição da Vaga</label>
-                    <textarea name="descricao" id="descricao" cols="30" rows="3"></textarea>
+                    <textarea name="descricao" id="descricao" cols="30" rows="3"><%- vaga.descricao %></textarea>
                 </div>
                 <button>Enviar</button>
             </div>

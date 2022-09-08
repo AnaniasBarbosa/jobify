@@ -4,6 +4,7 @@ const app = express();
 const connection = require("../database/database");
 const Categorias = require("../database/categorias");
 const Vagas = require("../database/vagas");
+const { urlencoded } = require("express");
 
 connection
   .authenticate()
@@ -15,6 +16,7 @@ connection
   });
 
 app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 app.set("view engine", "ejs");
 app.use(express.static("public"));
 
@@ -80,9 +82,43 @@ app.get("/admin/vagas/remover/:id", async (req, res) => {
 
 app.get("/admin/vagas/criarVaga/", async (req, res) => {
   const categorias = await Categorias.findAll({ raw: true });
-  res.render("/admin/nova-vaga", {
+  res.render("admin/nova-vaga", {
     categorias,
   });
+});
+
+app.post("/admin/vagas/criarVaga/", async (req, res) => {
+  const { categoria, nome, descricao } = req.body;
+
+  await Vagas.create({
+    categoria,
+    nome,
+    descricao,
+  });
+  return res.redirect("/admin/vagas/");
+});
+
+app.get("/admin/vagas/editar/:id", async (req, res) => {
+  const idVaga = req.params.id;
+  const vaga = await Vagas.findByPk(idVaga);
+  const categorias = await Categorias.findAll({ raw: true });
+  res.render("admin/editar-vaga", {
+    categorias,
+    vaga,
+  });
+});
+
+app.post("/admin/vagas/editar/:id", async (req, res) => {
+  const { categoria, nome, descricao } = req.body;
+  const { id } = req.params;
+
+  const vaga = await Vagas.findByPk(id);
+  vaga.descricao = descricao;
+  vaga.nome = nome;
+  vaga.categoria = categoria;
+
+  await vaga.save();
+  res.redirect("/admin/vagas/");
 });
 
 app.listen(3000, (err) => {

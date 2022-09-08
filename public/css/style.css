@@ -39,6 +39,18 @@ footer {
 ul {
   list-style: none;
 }
+label {
+  padding-bottom: 5px;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+
+  margin-bottom: 10px;
+}
 .logo {
   display: flex;
   flex-direction: column;
@@ -86,4 +98,17 @@ ul {
   flex-direction: column;
   align-items: center;
   justify-content: center;
+}
+
+.editar {
+  margin-left: 10px;
+  color:rgb(101, 48, 223);
+  text-decoration: none;
+}
+.excluir {
+  color: brown;
+  text-decoration: none;
+}
+.vaga {
+  margin-bottom: 10px;
 }

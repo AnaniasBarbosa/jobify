@@ -11,9 +11,10 @@
         <h3>Vagas:</h3>
         <ul>
             <% vagas.forEach(vg => { %>
-            <li>
+            <li class="vaga">
                 <%- vg.nome %>
-                <a href="/admin/vagas/remover/<%- vg.id %> "> Excluir</a>
+                <a href="/admin/vagas/editar/<%- vg.id %>" class="editar"> - Editar | </a>
+                <a href="/admin/vagas/remover/<%- vg.id %>" class="excluir"> Excluir</a>
             </li>
             <% }) %>
         </ul>
