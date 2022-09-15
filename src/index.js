@@ -1,9 +1,11 @@
 const express = require("express");
 const app = express();
 
-const connection = require("./database/database");
-const Categorias = require("./database/categorias");
-const Vagas = require("./database/vagas");
+const port = process.env.PORT || 3000;
+
+const connection = require("../database/database");
+const Categorias = require("../database/categorias");
+const Vagas = require("../database/vagas");
 
 connection
   .authenticate()
@@ -16,8 +18,6 @@ connection
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-
-const port = process.env.PORT || 3000;
 
 app.set("view engine", "ejs");
 app.use(express.static("public"));
