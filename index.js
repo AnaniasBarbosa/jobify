@@ -112,7 +112,7 @@ app.post("/admin/vagas/editar/:id", async (req, res) => {
   res.redirect("/admin/vagas/");
 });
 
-app.listen(3000, (err) => {
+app.listen(port, (err) => {
   if (!err) {
     console.log("SERVIDOR EM EXECUÇÃO");
   }
